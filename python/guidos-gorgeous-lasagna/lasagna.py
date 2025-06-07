@@ -10,9 +10,15 @@ of a module and its functions and/or classes.
 
 #TODO: define the 'EXPECTED_BAKE_TIME' constant below.
 
+# Expected oven time in minutes for a proper lasagna bake.
+EXPECTED_BAKE_TIME = 40
+
+# Additional preparation time per layer in minutes.
+PREPARATION_TIME = 2
 
 #TODO: Remove 'pass' and complete the 'bake_time_remaining()' function below.
-def bake_time_remaining():
+
+def bake_time_remaining(elapsed_bake_time: int) -> int:
     """Calculate the bake time remaining.
 
     :param elapsed_bake_time: int - baking time already elapsed.
@@ -23,7 +29,7 @@ def bake_time_remaining():
     based on the `EXPECTED_BAKE_TIME`.
     """
 
-    pass
+    return EXPECTED_BAKE_TIME - elapsed_bake_time
 
 
 #TODO: Define the 'preparation_time_in_minutes()' function below.
@@ -31,11 +37,31 @@ def bake_time_remaining():
 # You can do that on the line below the 'EXPECTED_BAKE_TIME' constant.
 # This will make it easier to do calculations.
 
+def preparation_time_in_minutes(layers: int) -> int:
+    """Calculate preparation time for the lasagna layers.
+
+    :param layers: int - number of lasagna layers to prepare.
+    :return: int - total preparation time based on 'PREPARATION_TIME'.
+    """
+
+    return layers * PREPARATION_TIME
 
 
 #TODO: define the 'elapsed_time_in_minutes()' function below.
 
+def elapsed_time_in_minutes(layers: int, elapsed_bake_time: int) -> int:
+    """Calculate the total elapsed cooking time.
 
+    This includes both the time spent preparing the layers and the time
+    already spent baking.
+
+    :param layers: int - number of lasagna layers prepared.
+    :param elapsed_bake_time: int - time lasagna has already baked.
+    :return: int - total elapsed time in minutes.
+    """
+
+    prep_time = preparation_time_in_minutes(layers)
+    return prep_time + elapsed_bake_time
 
 # TODO: Remember to go back and add docstrings to all your functions
 #  (you can copy and then alter the one from bake_time_remaining.)
